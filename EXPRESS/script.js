@@ -20,8 +20,17 @@ app.get('/usuarios/:id', (req, res) => {
 })
 
 app.get('/usuarios', (req, res) => {
-    const categoria = req.query.categoria //aqui ele vai pegar o item categoria vendo da URL
+    const cat = req.query.categoria //aqui ele vai pegar o item categoria vendo da URL
     //Como as query são opcionais não devomos colocar elas na rota(path), els são inviseveis
+
+    //Tambem e possivel filtrar oque queremos:
+    const { categoria } = req.query //o query vai retornar varios itens caso no filtro contenha mais de 1, ness caso destruturamos essa resposta
+    //e salvamos o item categoria nessa variavel
+
+    //Além disso tambem podemos atribuir varios itens destruturando o vetor>
+
+    const {nome, idade} = req.query //recuperamos os itens nome e idade e salvamos em 2 variaveis.
+
     res.status(200).json() //aqui ele vai retornar o status 200 (ok) para o fetch OLHE O ARQUIVO resSTATUS.js para saber MAIS
 })
 
